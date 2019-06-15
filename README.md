@@ -17,10 +17,18 @@ In this repository, you'll find,
 1. A Jupyter Notebook for scraping Wikipedia for suitable names, and
 2. a small website for rendering these out.
 
-# How to run it
+# Building and Running
 
-Assuming that you have Docker installed, you can spin up your own Jupyter Notebook stack rather easily, executing the following command in this directory should give you a running instance of Jupyter through which you can edit and run the notebook,
+If you do not already have Docker installed then [begin by doing that first.](https://docs.docker.com/v17.12/install/)
+
+Afterwards, continue by building the Dockerfile,
 
 ```
-$ docker run -p 8888:8888 -v $PWD:/home/jovyan jupyter/minimal-notebook
+docker build -t "jupyterbs4" .
+```
+
+and then you can spin up the Jupyter Notebook stack by executing the following command in this directory,
+
+```
+docker run -p 8888:8888 -v $PWD:/home/jovyan jupyterbs4
 ```
