@@ -1,21 +1,23 @@
 .PHONY: image run-notebook clean
 
 JOVYAN_HOME=/home/jovyan/
+NOTEBOOK_PATH=$(PWD)/notebook
 DEFAULT_CONTAINER_NAME:=climber-name-scraper
-IMAGE:=filipallberg/jupyterbs4
+TAG:=$(DEFAULT_CONTAINER_NAME)
+SCRAPER_IMAGE:=filipallberg/jupyterbs4
 
 define RUN_NOTEBOOK
 -@docker rm -f $(CONTAINER_NAME) 2> /dev/null
 @docker run -d -p $(PORT):8888 \
 		--name $(CONTAINER_NAME) \
-		-v $(PWD)/notebook:$(JOVYAN_HOME) \
+		-v $(NOTEBOOK_PATH):$(JOVYAN_HOME) \
 		$(DOCKER_ARGS) \
-		$(IMAGE) bash -c "$(PRE_CMD) chown jovyan $(JOVYAN_HOME) && start-notebook.sh $(ARGS)" > /dev/null
+		$(SCRAPER_IMAGE) bash -c "$(PRE_CMD) chown jovyan $(JOVYAN_HOME) && start-notebook.sh $(ARGS)" > /dev/null
 endef
 
 image: DOCKER_ARGS?=
 image:
-	@docker build --rm $(DOCKER_ARGS) -t $(IMAGE) .
+	@docker build --rm $(DOCKER_ARGS) -t $(TAG) .
 
 run-notebook: PORT?=80
 run-notebook: CONTAINER_NAME?=$(DEFAULT_CONTAINER_NAME)
