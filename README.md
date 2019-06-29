@@ -21,14 +21,4 @@ In this repository, you'll find,
 
 If you do not already have Docker installed then [begin by doing that first.](https://docs.docker.com/v17.12/install/)
 
-Afterwards, continue by building the Dockerfile,
-
-```
-docker build -t "jupyterbs4" .
-```
-
-and then you can spin up the Jupyter Notebook stack by executing the following command in this directory,
-
-```
-docker run -p 8888:8888 -v $PWD:/home/jovyan jupyterbs4
-```
+Afterwards, run the notebook interactively through `make notebook`
