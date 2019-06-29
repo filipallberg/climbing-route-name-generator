@@ -1,4 +1,4 @@
-.PHONY: image notebook clean
+.PHONY: image run-notebook clean
 
 JOVYAN_HOME=/home/jovyan/
 DEFAULT_CONTAINER_NAME:=climber-name-scraper
@@ -17,10 +17,10 @@ image: DOCKER_ARGS?=
 image:
 	@docker build --rm $(DOCKER_ARGS) -t $(IMAGE) .
 
-notebook: PORT?=80
-notebook: CONTAINER_NAME?=$(DEFAULT_CONTAINER_NAME)
-notebook: WORK_VOLUME?=$(DEFAULT_WORK_VOLUME)
-notebook:
+run-notebook: PORT?=80
+run-notebook: CONTAINER_NAME?=$(DEFAULT_CONTAINER_NAME)
+run-notebook: WORK_VOLUME?=$(DEFAULT_WORK_VOLUME)
+run-notebook:
 	$(RUN_NOTEBOOK) ; \
 	CONTAINER_NAME=$(CONTAINER_NAME) PORT=$(PORT) ./output-jupyter-notebook-url.sh
 

@@ -21,4 +21,4 @@ In this repository, you'll find,
 
 If you do not already have Docker installed then [begin by doing that first.](https://docs.docker.com/v17.12/install/)
 
-Afterwards, run the notebook interactively through `make notebook`
+Afterwards, run the notebook interactively through `make run-notebook`
