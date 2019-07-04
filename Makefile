@@ -2,6 +2,7 @@
 
 JOVYAN_HOME=/home/jovyan/
 NOTEBOOK_PATH=$(PWD)/notebook
+NOTEBOOK_NAME=scraping_climber_names_off_of_wikipedia.ipynb
 DEFAULT_CONTAINER_NAME:=climber-name-scraper
 TAG:=$(DEFAULT_CONTAINER_NAME)
 SCRAPER_IMAGE:=filipallberg/jupyterbs4
@@ -26,7 +27,20 @@ run-notebook:
 	$(RUN_NOTEBOOK) ; \
 	CONTAINER_NAME=$(CONTAINER_NAME) PORT=$(PORT) ./output-jupyter-notebook-url.sh
 
+climbers.json: CONTAINER_NAME?=$(DEFAULT_CONTAINER_NAME)
+climbers.json: image
+climbers.json: run-notebook
+climbers.json:
+	@docker exec -it $(CONTAINER_NAME) jupyter nbconvert --to notebook --inplace --execute $(NOTEBOOK_NAME)
+
+climbers-pretty.json: CONTAINER_NAME?=$(DEFAULT_CONTAINER_NAME)
+climbers-pretty.json: climbers.json
+climbers-pretty.json:
+	@docker exec -it $(CONTAINER_NAME) cat climbers.json | jq '' > $(NOTEBOOK_PATH)/climbers-pretty.json
+
 clean: CONTAINER_NAME?=$(DEFAULT_CONTAINER_NAME)
 clean: WORK_VOLUME?=$(DEFAULT_WORK_VOLUME)
 clean:
 	@docker rm -f $(CONTAINER_NAME)
+	@rm $(NOTEBOOK_PATH)/climbers.json
+	@rm $(NOTEBOOK_PATH)/climbers-pretty.json
