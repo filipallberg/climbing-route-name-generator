@@ -122,16 +122,30 @@ function randomAdjective() {
     return randomElement(adjectives);
 }
 
-function renderRouteName() {
+function getHref(climberLastName) {
+    return climbers[climberLastName][0];
+}
+
+function getDescription(climberLastName) {
+    return climbers[climberLastName][1];
+}
+
+function renderRouteName(climberLastName) {
     let routeName = document.getElementById("routeName");
 
     let left = randomAdjective();
-    let climberLastName = randomKey(climbers);
 
     routeName.text = left + '-' + climberLastName;
-    routeName.href = climbers[climberLastName][0];
+    routeName.href = getHref(climberLastName);
+}
+
+function renderClimberDescription(climberLastName) {
+    let climberDetails = document.getElementById("climberDetails");
+    climberDetails.innerHTML = getDescription(climberLastName);
 }
 
 document.addEventListener('DOMContentLoaded', function () {
-    renderRouteName();
+    let climberLastName = randomKey(climbers);
+    renderRouteName(climberLastName);
+    renderClimberDescription(climberLastName);
 });
