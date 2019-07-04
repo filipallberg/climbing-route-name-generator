@@ -2,6 +2,10 @@ function randomElement(list) {
     return list[Math.floor(Math.random() * list.length)];
 }
 
+function randomKey(obj) {
+    return randomElement(Object.keys(obj));
+};
+
 function randomAdjective() {
     let adjectives = [
         "admiring",
@@ -121,7 +125,10 @@ function randomAdjective() {
 function renderRouteName() {
     let routeName = document.getElementById("routeName");
 
-    routeName.text = randomAdjective();
+    let left = randomAdjective();
+    let right = randomKey(climbers);
+
+    routeName.text = left + '-' + right;
 }
 
 document.addEventListener('DOMContentLoaded', function () {
