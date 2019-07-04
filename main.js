@@ -126,9 +126,10 @@ function renderRouteName() {
     let routeName = document.getElementById("routeName");
 
     let left = randomAdjective();
-    let right = randomKey(climbers);
+    let climberLastName = randomKey(climbers);
 
-    routeName.text = left + '-' + right;
+    routeName.text = left + '-' + climberLastName;
+    routeName.href = climbers[climberLastName][0];
 }
 
 document.addEventListener('DOMContentLoaded', function () {
