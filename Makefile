@@ -38,9 +38,16 @@ climbers-pretty.json: climbers.json
 climbers-pretty.json:
 	@docker exec -it $(CONTAINER_NAME) cat climbers.json | jq '' > $(NOTEBOOK_PATH)/climbers-pretty.json
 
+climbers.js: climbers-pretty.json
+climbers.js:
+	@cp $(NOTEBOOK_PATH)/climbers-pretty.json climbers.js
+	@sed -i '1 s/^.*$$/let climbers = {/' climbers.js
+
 clean: CONTAINER_NAME?=$(DEFAULT_CONTAINER_NAME)
 clean: WORK_VOLUME?=$(DEFAULT_WORK_VOLUME)
 clean:
 	@docker rm -f $(CONTAINER_NAME)
 	@rm $(NOTEBOOK_PATH)/climbers.json
 	@rm $(NOTEBOOK_PATH)/climbers-pretty.json
+	@rm climbers.js
+    
