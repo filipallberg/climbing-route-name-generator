@@ -11,10 +11,13 @@ main {
 
 #routeName {
     text-transform: lowercase;
+    font-family: Sans-Serif;
+    font-weight: bolder;
     white-space: nowrap;
     font-size: 2.4rem;
 }
 
 #climberDetails {
     font-size: 1.2rem;
+    font-family: serif;
 }
