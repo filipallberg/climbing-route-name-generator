@@ -7,3 +7,8 @@ main {
 header {
     text-align: center;
 }
+
+#routeName {
+    text-transform: lowercase;
+    white-space: nowrap;
+}
