@@ -12,4 +12,9 @@ main {
 #routeName {
     text-transform: lowercase;
     white-space: nowrap;
+    font-size: 2.4rem;
+}
+
+#climberDetails {
+    font-size: 1.2rem;
 }
