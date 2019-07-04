@@ -1,0 +1,9 @@
+main {
+    max-width: 70ch;
+    padding: 1.5rem;
+    margin: auto;
+}
+
+header {
+    text-align: center;
+}
