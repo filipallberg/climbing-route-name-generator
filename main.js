@@ -7,7 +7,7 @@ function randomKey(obj) {
 };
 
 function randomAdjective() {
-    let adjectives = [
+    const adjectives = [
         "admiring",
         "adoring",
         "affectionate",
@@ -135,19 +135,19 @@ function createRouteName(climberLastName) {
 }
 
 function renderRouteName(climberLastName) {
-    let routeName = document.getElementById("routeName");
+    const routeName = document.getElementById("routeName");
 
     routeName.text = createRouteName(climberLastName);
     routeName.href = getHref(climberLastName);
 }
 
 function renderClimberDescription(climberLastName) {
-    let climberDetails = document.getElementById("climberDetails");
+    const climberDetails = document.getElementById("climberDetails");
     climberDetails.innerHTML = getDescription(climberLastName);
 }
 
 document.addEventListener('DOMContentLoaded', function () {
-    let climberLastName = randomKey(climbers);
+    const climberLastName = randomKey(climbers);
     renderRouteName(climberLastName);
     renderClimberDescription(climberLastName);
 });
