@@ -23,7 +23,45 @@ In this repository, you'll find,
 
 If you do not already have Docker installed then [begin by doing that first.](https://docs.docker.com/v17.12/install/)
 
-Afterwards, run the notebook interactively through `make run-notebook`
+Afterwards, run the notebook interactively through `make run-notebook` if you want to experiment with the scraping
+code on your own.
+
+If you just want to generate some sweet sweet route names, then run `make climbers.js` and open `index.html` in your
+browser.
+
+## Easter egg
+
+If you want to generate some names for a climber in particular, you can append `?name=` together with the climber
+name of your choice in your web-browser. If possible, the page will render out a route name seeded using the name
+you provided. If not, it'll default back to rendering out a random name for a random climber.
+
+For instance, visiting
+
+```
+file://path/to/repo/index.html?name=Alex Honnold
+```
+
+will display a page akin to,
+
+![Alex Honnold](./demo/alex-honnold-desktop.png)
+
+whilst visiting
+
+```
+file://path/to/repo/index.html?name=Allberg
+```
+
+will give a random route name along with the pertinent description.
+
+## Getting some dope screens
+
+If you'd like to generate out some screen-shots to admire then you running `python3 demo.py` will (assuming
+you have Selenium and the `geckodriver` on hand) create a directory called `img` with a few desktop- and 
+mobile-renderings of the page.
+
+## Cleaning things up without nuking the entire catalogue
+
+Later, if you need to clean things up, `make clean` will appease you.
 
 # Demos
 
