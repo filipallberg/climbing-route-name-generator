@@ -1,11 +1,15 @@
+.content {
+    display: flex;
+    position: relative;
+    min-height: 100vh;
+    justify-content: center;
+    align-items: center;
+}
+
 main {
     max-width: 70ch;
     padding: 1.5rem;
     margin: auto;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
     text-align: center;
 }
 
