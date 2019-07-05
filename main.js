@@ -122,6 +122,10 @@ function randomAdjective() {
     return randomElement(adjectives);
 }
 
+const getRouteNameElement = () => document.getElementById("routeName");
+
+const getClimberDescriptionElement = () => document.getElementById("climberDetails");
+
 function getHref(climberLastName) {
     return climbers[climberLastName][0];
 }
@@ -135,14 +139,14 @@ function createRouteName(climberLastName) {
 }
 
 function renderRouteName(climberLastName) {
-    const routeName = document.getElementById("routeName");
+    const routeName = getRouteNameElement();
 
     routeName.text = createRouteName(climberLastName);
     routeName.href = getHref(climberLastName);
 }
 
 function renderClimberDescription(climberLastName) {
-    const climberDetails = document.getElementById("climberDetails");
+    const climberDetails = getClimberDescriptionElement();
     climberDetails.innerHTML = getDescription(climberLastName);
 }
 
@@ -164,15 +168,24 @@ function cssHSL(hue, saturation, lightness) {
 }
 
 function generateBackgroundColor() {
-    const sat = '60';
-    const l = '75';
+    const sat = 60;
+    const l = 75;
 
-    return cssHSL(pleasantHue(), sat, l);
+    return [pleasantHue(), sat, l];
+}
+
+function generateAHrefColor(hue, saturation, lightness) {
+    return [hue, saturation-10, lightness-30];
 }
 
 document.addEventListener('DOMContentLoaded', function () {
     const climberLastName = randomKey(climbers);
     renderRouteName(climberLastName);
     renderClimberDescription(climberLastName);
-    document.body.style.backgroundColor = generateBackgroundColor();
+
+    const hsl = generateBackgroundColor();
+
+    document.body.style.backgroundColor = cssHSL(...hsl);
+    const routeName = getRouteNameElement();
+    routeName.style.color = cssHSL(...generateAHrefColor(...hsl));
 });
