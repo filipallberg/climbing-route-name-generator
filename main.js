@@ -186,11 +186,21 @@ function setAHrefColorInDescription(hsl) {
     });
 }
 
-document.addEventListener('DOMContentLoaded', function () {
-    const urlParams = new URLSearchParams(window.location.search);
-    const rawClimberNameSeed = urlParams.get('name') || '';
+function keysToLowerCase(obj) {
+    const newObj = {};
 
-    const climberNameSeed = rawClimberNameSeed.charAt(0).toUpperCase() + rawClimberNameSeed.slice(1);
+    Object.keys(obj).forEach(key => {
+        const k = key.toLowerCase();
+        newObj[k] = obj[key];
+    });
+    return newObj;
+}
+
+document.addEventListener('DOMContentLoaded', function () {
+    climbers = keysToLowerCase(climbers);
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const climberNameSeed = urlParams.get('name').toLowerCase() || '';
 
     const climberName = climberNameSeed in climbers ? climberNameSeed : randomKey(climbers);
 
