@@ -200,7 +200,9 @@ document.addEventListener('DOMContentLoaded', function () {
     climbers = keysToLowerCase(climbers);
 
     const urlParams = new URLSearchParams(window.location.search);
-    const climberNameSeed = urlParams.get('name').toLowerCase() || '';
+    const rawClimberNameSeed = urlParams.get('name') || '';
+
+    const climberNameSeed = rawClimberNameSeed.toLowerCase();
 
     const climberName = climberNameSeed in climbers ? climberNameSeed : randomKey(climbers);
 
