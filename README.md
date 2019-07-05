@@ -4,7 +4,7 @@ A name generator inspired by Docker container names
 
 ---
 
-![Hayes Mobile](./demo/hayes-mobile.png)
+![Hayes Desktop](./demo/hayes-desktop.png)
 
 If you've ever worked with Docker you might have been pleasantly surprised by container names such as `furious_einstein`, `agitated_curie`, `wizardly_lovelace`, and `romantic_darwin`. 
 
