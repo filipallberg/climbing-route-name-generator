@@ -43,7 +43,7 @@ file://path/to/repo/index.html?name=Alex Honnold
 
 will display a page akin to,
 
-![Alex Honnold](./demo/alex-honnold-desktop.png)
+![Honnold Desktop](./demo/honnold-desktop.png)
 
 whilst visiting
 
