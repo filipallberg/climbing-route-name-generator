@@ -49,4 +49,8 @@ main {
     #routeName {
         white-space: normal;
     }
+
+    #climberDetails {
+        font-size: 1rem;
+    }
 }
