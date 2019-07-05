@@ -130,12 +130,14 @@ function getDescription(climberLastName) {
     return climbers[climberLastName][1];
 }
 
+function createRouteName(climberLastName) {
+    return randomAdjective() + '-' + climberLastName;
+}
+
 function renderRouteName(climberLastName) {
     let routeName = document.getElementById("routeName");
 
-    let left = randomAdjective();
-
-    routeName.text = left + '-' + climberLastName;
+    routeName.text = createRouteName(climberLastName);
     routeName.href = getHref(climberLastName);
 }
 
