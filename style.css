@@ -44,3 +44,9 @@ main {
     box-decoration-break: clone;
     -webkit-box-decoration-break: clone;
 }
+
+@media screen and (max-width: 799px) {
+    #routeName {
+        white-space: normal;
+    }
+}
