@@ -126,17 +126,13 @@ const getRouteNameElement = () => document.getElementById("routeName");
 
 const getClimberDescriptionElement = () => document.getElementById("climberDetails");
 
-function getHref(climberLastName) {
-    return climbers[climberLastName][0];
-}
+const getHref = climberLastName => climbers[climberLastName][0];
 
-function getDescription(climberLastName) {
-    return climbers[climberLastName][1];
-}
+const getDescription = climberLastName => climbers[climberLastName][1];
 
-function createRouteName(climberLastName) {
-    return randomAdjective() + '-' + climberLastName;
-}
+const createRouteName = climberLastName => randomAdjective() + '-' + climberLastName;
+
+const randomInt = max => Math.floor(Math.random() * Math.floor(max));
 
 function renderRouteName(climberLastName) {
     const routeName = getRouteNameElement();
@@ -148,10 +144,6 @@ function renderRouteName(climberLastName) {
 function renderClimberDescription(climberLastName) {
     const climberDetails = getClimberDescriptionElement();
     climberDetails.innerHTML = getDescription(climberLastName);
-}
-
-function randomInt(max) {
-    return Math.floor(Math.random() * Math.floor(max));
 }
 
 function pleasantHue() {
