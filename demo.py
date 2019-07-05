@@ -26,12 +26,12 @@ browser = webdriver.Firefox()
 
 for name in names:
     visit_site(name)
-    save_screenshot('-'.join(name.lower().split(' ')) + '-desktop')
+    save_screenshot(name.lower().split(' ')[1] + '-desktop')
 
 browser.set_window_size(360, 740)
 
 for name in names:
     visit_site(name)
-    save_screenshot('-'.join(name.lower().split(' ')) + '-mobile')
+    save_screenshot(name.lower().split(' ')[1] + '-mobile')
 
 browser.close()
