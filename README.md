@@ -4,6 +4,8 @@ A name generator inspired by Docker container names
 
 ---
 
+![Hayes Mobile](./demo/hayes-mobile.png)
+
 If you've ever worked with Docker you might have been pleasantly surprised by container names such as `furious_einstein`, `agitated_curie`, `wizardly_lovelace`, and `romantic_darwin`. 
 
 The code responsible for generating names such as these [(names-generator.go)](https://github.com/moby/moby/blob/master/pkg/namesgenerator/names-generator.go) works by pairing a long list of adjectives together with a list of last names.
@@ -22,3 +24,10 @@ In this repository, you'll find,
 If you do not already have Docker installed then [begin by doing that first.](https://docs.docker.com/v17.12/install/)
 
 Afterwards, run the notebook interactively through `make run-notebook`
+
+# Demos
+
+Here are a few samples (mobile- and desktop)
+
+![Sharma Mobile](./demo/sharma-mobile.png)
+![Kropp Desktop](./demo/kropp-desktop.png)
