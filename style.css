@@ -1,3 +1,14 @@
+html {
+    font-size: 16px;
+    font-family: Sans-Serif;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.5;
+    min-height: 100vh;
+    min-width: 300px;
+    overflow-x: hidden;
+}
+
 .content {
     display: flex;
     position: relative;
@@ -15,7 +26,6 @@ main {
 
 #routeName {
     text-transform: lowercase;
-    font-family: Sans-Serif;
     font-weight: bolder;
     white-space: nowrap;
     font-size: 2.4rem;
@@ -23,5 +33,4 @@ main {
 
 #climberDetails {
     font-size: 1.2rem;
-    font-family: Sans-Serif;
 }
