@@ -8,12 +8,12 @@ shutil.rmtree(output_dir)
 os.mkdir(cwd + '/' + output_dir)
 
 lastnames = [
-    'Honnold', # Because most people know who that is
-    'Sharma', # Because I'd like to climb like Sharma
-    'Hayes', # Because her work ethic inspires me
-    'Kropp', # Because everyone should know someone biked to Everest
-    'Smoluchowski', # Because there is no description for him and I like to see how that renders
-    # 'Hill', see issue #1
+    'Alex Honnold', # Because most people know who that is
+    'Chris Sharma', # Because I'd like to climb like Sharma
+    'Margo Hayes', # Because her work ethic inspires me
+    'Göran Kropp', # Because everyone should know someone biked to Everest
+    'Marian Smoluchowski', # Because there is no description for him and I like to see how that renders
+    'Lynn Hill', 
 ]
 
 def visit_site(lastname):

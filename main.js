@@ -126,24 +126,26 @@ const getRouteNameElement = () => document.getElementById("routeName");
 
 const getClimberDescriptionElement = () => document.getElementById("climberDetails");
 
-const getHref = climberLastName => climbers[climberLastName][0];
+const getHref = climberName => climbers[climberName][0];
 
-const getDescription = climberLastName => climbers[climberLastName][1];
+const getDescription = climberName => climbers[climberName][1];
 
-const createRouteName = climberLastName => randomAdjective() + '-' + climberLastName;
+const getLastName = climberName => climberName.split(" ")[1];
+
+const createRouteName = climberName => randomAdjective() + '-' + getLastName(climberName);
 
 const randomInt = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min; // inclusive
 
-function renderRouteName(climberLastName) {
+function renderRouteName(climberName) {
     const routeName = getRouteNameElement();
 
-    routeName.text = createRouteName(climberLastName);
-    routeName.href = getHref(climberLastName);
+    routeName.text = createRouteName(climberName);
+    routeName.href = getHref(climberName);
 }
 
-function renderClimberDescription(climberLastName) {
+function renderClimberDescription(climberName) {
     const climberDetails = getClimberDescriptionElement();
-    climberDetails.innerHTML = getDescription(climberLastName);
+    climberDetails.innerHTML = getDescription(climberName);
 }
 
 function pleasantHue() {
@@ -190,10 +192,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
     const climberNameSeed = rawClimberNameSeed.charAt(0).toUpperCase() + rawClimberNameSeed.slice(1);
 
-    const climberLastName = climberNameSeed in climbers ? climberNameSeed : randomKey(climbers);
+    const climberName = climberNameSeed in climbers ? climberNameSeed : randomKey(climbers);
 
-    renderRouteName(climberLastName);
-    renderClimberDescription(climberLastName);
+    renderRouteName(climberName);
+    renderClimberDescription(climberName);
 
     const hsl = generateBackgroundColor();
 
