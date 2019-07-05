@@ -146,8 +146,33 @@ function renderClimberDescription(climberLastName) {
     climberDetails.innerHTML = getDescription(climberLastName);
 }
 
+function randomInt(max) {
+    return Math.floor(Math.random() * Math.floor(max));
+}
+
+function pleasantHue() {
+    const goldenRatio = 0.618033988749895;
+    const hueMax = 360;
+
+    const baseHue = randomInt(hueMax); 
+
+    return (baseHue + (baseHue / goldenRatio)) % hueMax;
+}
+
+function cssHSL(hue, saturation, lightness) {
+    return 'hsl(' + hue + ',' + saturation + '%,' + lightness + '%)';
+}
+
+function generateBackgroundColor() {
+    const sat = '60';
+    const l = '75';
+
+    return cssHSL(pleasantHue(), sat, l);
+}
+
 document.addEventListener('DOMContentLoaded', function () {
     const climberLastName = randomKey(climbers);
     renderRouteName(climberLastName);
     renderClimberDescription(climberLastName);
+    document.body.style.backgroundColor = generateBackgroundColor();
 });
