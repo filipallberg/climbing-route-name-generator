@@ -186,7 +186,11 @@ function setAHrefColorInDescription(hsl) {
 
 document.addEventListener('DOMContentLoaded', function () {
     const urlParams = new URLSearchParams(window.location.search);
-    const climberLastName = urlParams.get('name') || randomKey(climbers);
+    const rawClimberNameSeed = urlParams.get('name') || '';
+
+    const climberNameSeed = rawClimberNameSeed.charAt(0).toUpperCase() + rawClimberNameSeed.slice(1);
+
+    const climberLastName = climberNameSeed in climbers ? climberNameSeed : randomKey(climbers);
 
     renderRouteName(climberLastName);
     renderClimberDescription(climberLastName);
