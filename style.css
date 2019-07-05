@@ -53,4 +53,8 @@ main {
     #climberDetails {
         font-size: 1rem;
     }
+
+    .padded-multiline {
+        text-align: left;
+    }
 }
