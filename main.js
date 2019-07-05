@@ -178,6 +178,20 @@ function generateAHrefColor(hue, saturation, lightness) {
     return [hue, saturation-10, lightness-30];
 }
 
+function darkenRouteNameRelativeToBackground(backgroundHsl) {
+    const routeName = getRouteNameElement();
+    routeName.style.color = cssHSL(...generateAHrefColor(...backgroundHsl));
+}
+
+function setAHrefColorInDescription(hsl) {
+    const description = getClimberDescriptionElement();
+    const links = description.querySelectorAll('a');
+
+    links.forEach(a => {
+        a.style.color = cssHSL(...generateAHrefColor(...hsl));
+    });
+}
+
 document.addEventListener('DOMContentLoaded', function () {
     const climberLastName = randomKey(climbers);
     renderRouteName(climberLastName);
@@ -186,6 +200,6 @@ document.addEventListener('DOMContentLoaded', function () {
     const hsl = generateBackgroundColor();
 
     document.body.style.backgroundColor = cssHSL(...hsl);
-    const routeName = getRouteNameElement();
-    routeName.style.color = cssHSL(...generateAHrefColor(...hsl));
+    darkenRouteNameRelativeToBackground(hsl);
+    setAHrefColorInDescription(hsl);
 });
