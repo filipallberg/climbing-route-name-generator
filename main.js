@@ -132,7 +132,7 @@ const getDescription = climberLastName => climbers[climberLastName][1];
 
 const createRouteName = climberLastName => randomAdjective() + '-' + climberLastName;
 
-const randomInt = max => Math.floor(Math.random() * Math.floor(max));
+const randomInt = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min; // inclusive
 
 function renderRouteName(climberLastName) {
     const routeName = getRouteNameElement();
@@ -150,7 +150,7 @@ function pleasantHue() {
     const goldenRatio = 0.618033988749895;
     const hueMax = 360;
 
-    const baseHue = randomInt(hueMax); 
+    const baseHue = randomInt(0, hueMax); 
 
     return (baseHue + (baseHue / goldenRatio)) % hueMax;
 }
@@ -160,8 +160,8 @@ function cssHSL(hue, saturation, lightness) {
 }
 
 function generateBackgroundColor() {
-    const sat = 60;
-    const l = 75;
+    const sat = randomInt(55, 70);
+    const l = randomInt(65, 85);
 
     return [pleasantHue(), sat, l];
 }
